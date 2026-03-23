@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.venv
+
+.idea
+
+# Data
+data/
+data_0_1/
+archive\American Sign Language Digits Dataset
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# YOLO
+*.pt
