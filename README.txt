@@ -19,7 +19,7 @@ data/ - folder holding all images in there class folder
     7/
     8/
     9/
-Camera_windows.py - for developing or just running on Camera_windows
+Camera_windows.py - for developing or just running on windows
 Camera.py - for running on the jetson nano 
 
 %% Rest run on either the Jetson nano (Linux - Ubuntu) or windows - MacOS is untested
