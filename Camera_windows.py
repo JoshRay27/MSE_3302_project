@@ -9,7 +9,7 @@ from train import NUM_CLASSES
 import serial
 import time
 
-ser = serial.Serial('dev/ttyUSB0', 115200, timeout=1)
+ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=1)
 time.sleep(2) #Allow ESP 32 Time to reboot
 
 
@@ -46,7 +46,7 @@ def main():
 
             H, W, _ = frame.shape
 
-            # Define two ROI centered 400×400 ROI
+            # Define two ROI 
             x1 = 0
             y1 = 0
             x2 = W//2
