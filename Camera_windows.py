@@ -53,7 +53,7 @@ def main():
             y2 = H
             x3 = W
             y3 = H
-
+            
 
             roi_left = frame[y1:y2, x1:x2]
             roi_right = frame[y1:y3, x2:x3]

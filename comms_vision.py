@@ -1,6 +1,7 @@
 import serial
 import time
 import random
+from get_photo import predict_single_frame
 
 
 # ---------------------------------------------------------
@@ -56,7 +57,7 @@ def choose_hand(my_right, my_left, opp_left, opp_right):
 
 
 
-serH = serial.Serial('COM6', 115200, timeout=1)
+#serH = serial.Serial('COM3', 115200, timeout=1)
 serB = serial.Serial('COM3', 115200, timeout=1)
 time.sleep(2)  # allow ESP32 to reboot
 
@@ -76,8 +77,7 @@ while True:
         msg = input("Enter message to send (e.g., left:scissors or right:back): ")
         
         if(mse == "hand"):
-            serH.write((msg + "\n").encode())
-            
+            #serH.write((msg + "\n").encode())
             print("Sent:", msg)
         elif (mse == "back"):
             serB.write((msg + "\n").encode())
@@ -89,7 +89,6 @@ while True:
         valueL = random.randint(0, 2)
         valueR = random.randint(0,2)
         print(f"left: {valueL} || right: {valueR}")
-        valueL = 1
         if (valueL == valueR):
             valueR = (valueR + 1) % 3
         #setup hands
@@ -99,11 +98,15 @@ while True:
         msgR = f"right:{rps[valueR]}"
         print(f"left hand go: {msgL} || right hand go: {myR}")
         #serH.write((msgL + "\n").encode())
-        #time.sleep(2)
-        serH.write((msgR + "\n").encode())
+        time.sleep(2)
+        #serH.write((msgR + "\n").encode())
 
-        enemyL = input("Input Enemy Left Hands Choice: ")
-        enemyR = input("Input Enemy Right Hand Choice: ")
+        results = predict_single_frame()
+        
+
+
+        enemyL = results["left"]
+        enemyR = results["right"]
 
         gameLogic = choose_hand(invRPS[myR], invRPS[myL], invRPS[enemyL], invRPS[enemyR])
         if(gameLogic == 0):

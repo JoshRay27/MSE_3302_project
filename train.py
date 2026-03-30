@@ -6,9 +6,9 @@ from models.complex_CNN import ASLNet
 from models.SVM import SVMClassifier
 from training import train, evaluate
 
-DATA_DIR = "data_0_1/"
+DATA_DIR = "data"
 BATCH_SIZE = 32
-NUM_CLASSES = 2
+NUM_CLASSES = 3
 
 def main():
     # load full dataset
